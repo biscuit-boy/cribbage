@@ -1,5 +1,6 @@
+import java.util.Comparator;
 
-public class Card{
+public class Card implements Comparable<Card>{
     public char val;
     public char suit;
 
@@ -8,10 +9,11 @@ public class Card{
         suit = Suit;
     }
 
+    @Override
     public int compareTo(Card other){
         String order = "A23456789TJQK";
 
-        return order.indexOf(val) - order.indexOf(other.val);
+        return order.indexOf(this.getVal()) - order.indexOf(other.getVal());
     }
 
     public char getVal(){

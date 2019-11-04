@@ -13,16 +13,15 @@ public class Hand{
     }
 
     public String toString(){
-        String words = "[ ";
+        String words = "";
         for (Card card : cards){
             words += card + " ";
         }
-        words += "]";
 
         return words;
     }
 
-    public int count(){
+    public void sort(){
         Collections.sort(cards);
     }
 

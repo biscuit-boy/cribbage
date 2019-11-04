@@ -9,7 +9,7 @@ public class Cribbage{
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Deck deck = new Deck();
 
         Hand hand1 = new Hand();
@@ -17,13 +17,8 @@ public class Cribbage{
 
         deal(deck, hand1, hand2);
 
-        System.out.println(hand1.toString());
-        System.out.println(hand2.toString());
 
-        hand1.count();
-        hand2.count();
 
-        System.out.println(hand1.toString());
-        System.out.println(hand2.toString());
+
     }
 }
