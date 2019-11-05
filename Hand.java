@@ -25,4 +25,16 @@ public class Hand{
         Collections.sort(cards);
     }
 
+    public int count(){
+      // 15s
+
+      // doubles and repeats
+
+      // flush
+
+      // runs
+
+      return 0;
+    }
+
 }
