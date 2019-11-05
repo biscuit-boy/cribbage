@@ -1,7 +1,9 @@
+import java.util.Arrays;
+
 public class Cribbage{
 
     public static void deal(Deck deck, Hand hand1, Hand hand2){
-        final int HAND_SIE = 6;
+        final int HAND_SIE = 5;
 
         for (int i = 0; i < HAND_SIE; ++i){
             hand1.addCard(deck.draw());
@@ -17,11 +19,11 @@ public class Cribbage{
 
         deal(deck, hand1, hand2);
 
-        System.out.println(hand1.toBin(15));
-        System.out.println(hand2.toBin(8));
+        System.out.println(hand1.toString());
+        System.out.println(hand2.toString());
 
-
-
+        System.out.println(hand1.count());
+        System.out.println(hand2.count());
 
     }
 }
