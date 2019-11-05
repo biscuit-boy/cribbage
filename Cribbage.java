@@ -17,6 +17,9 @@ public class Cribbage{
 
         deal(deck, hand1, hand2);
 
+        System.out.println(hand1.toBin(15));
+        System.out.println(hand2.toBin(8));
+
 
 
 

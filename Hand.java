@@ -25,8 +25,30 @@ public class Hand{
         Collections.sort(cards);
     }
 
+    public int[] toBin(int x){
+      int digits = cards.length;
+
+      int[] bin = new int[digits];
+
+      for (int i = 0; i < digits; ++i){
+        if (x <= Math.pow(2, (digits - i - 1))){
+          bin[i] = 1;
+          x -= Math.pow(2, (digits - i -1));
+        }
+        else{
+          bin[i] = 0;
+        }
+      }
+
+      return bin;
+    }
+
     public int count(){
       // 15s
+
+      for (int i = 1; i < Math.pow(2, cards.length); ++i){
+        continue;
+      }
 
       // doubles and repeats
 

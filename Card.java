@@ -1,9 +1,9 @@
 import java.util.Comparator;
 
 public class Card implements Comparable<Card>{
-    public char val;
-    public char suit;
-    public int points;
+    private char val;
+    private char suit;
+    private int points;
 
     public Card(char Val, char Suit){
         val = Val;
@@ -33,6 +33,10 @@ public class Card implements Comparable<Card>{
 
     public char getSuit(){
         return suit;
+    }
+
+    public int getPoints(){
+      return points
     }
 
     public String toString(){
