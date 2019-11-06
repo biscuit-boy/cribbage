@@ -21,19 +21,19 @@ public class Cribbage{
         return hand;
     }
 
+    public static double expectedReturn(Deck deck, Hand hand){
+        double expected = 0;
+
+        double deckSize = deck.getSize();
+
+        for (Card card : deck.getCards()){
+            expected += hand.count(card);
+        }
+
+        return expected / deckSize;
+    }
+
     public static void main(String[] args) {
-        Deck deck = new Deck();
-
-        String[] cards = {"AH", "JH", "6H", "KH"};
-
-        Hand hand1 = makeHand(deck, cards);
-
-        Card drawCard1 = deck.take("3S");
-        Card drawCard2 = deck.take("3H");
-
-        System.out.println(hand1.count(drawCard1));
-        System.out.println(hand1.count(drawCard2));
-
-
+        System.out.println("happening");
     }
 }

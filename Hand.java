@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Hand{
     public List<Card> cards = new ArrayList<Card>();
-    private boolean sorted = false;
 
     public Hand(){
     }
@@ -30,7 +29,6 @@ public class Hand{
 
     public void sort(){
         Collections.sort(cards);
-        sorted = true;
         return;
     }
 
@@ -77,7 +75,7 @@ public class Hand{
         }
 
         if (flush){
-            points += 4;
+            points += getSize();
 
             if (draw.getSuit() == suit){
                 points += 1;
@@ -89,6 +87,7 @@ public class Hand{
         for (Card card: cards){
             if (card.getVal() == 'J' && card.getSuit() == draw.getSuit()){
                 points += 1;
+                break;
             }
         }
 
@@ -154,8 +153,6 @@ public class Hand{
                 running = 0;
             }
         }
-
-        // knobs
 
         removeCard(draw);
 

@@ -25,7 +25,11 @@ public class Deck{
         return cards;
     }
 
-    public int getLen(){
+    public List<Card> getCards(){
+        return cards;
+    }
+
+    public int getSize(){
         return cards.size();
     }
 
