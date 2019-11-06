@@ -14,6 +14,17 @@ public class Hand{
         cards.remove(card);
     }
 
+    public Card takeAt(int x){
+        Card temp = cards.get(x);
+        removeCard(temp);
+        return temp;
+    }
+
+    public Card get(int x){
+        Card temp = cards.get(x);
+        return temp;
+    }
+
     public int getSize(){
         return cards.size();
     }
