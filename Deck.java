@@ -13,7 +13,6 @@ public class Deck{
 
         List<Card> cards = new ArrayList<Card>();
 
-
         for (char value : vals){
             for (char suit : suits){
                 Card temp = new Card(value, suit);
@@ -35,5 +34,19 @@ public class Deck{
         cards.remove(0);
 
         return temp;
+    }
+
+    public Card take(String key){
+        key = key.toUpperCase();
+
+        for (Card card : cards){
+            if (card.getVal() == key.charAt(0) && card.getSuit() == key.charAt(1)){
+                cards.remove(card);
+
+                return card;
+            }
+        }
+
+        throw new IllegalArgumentException("Card " + key + " not in deck.");
     }
 }

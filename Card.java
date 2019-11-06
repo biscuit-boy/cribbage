@@ -4,6 +4,7 @@ public class Card implements Comparable<Card>{
     private char val;
     private char suit;
     private int num;
+    private int index;
 
     public Card(char Val, char Suit){
         val = Val;
@@ -18,13 +19,15 @@ public class Card implements Comparable<Card>{
         else{
           num = (int) val - '0';
         }
+
+        String order = "A23456789TJQK";
+        index = order.indexOf(val);
+
     }
 
     @Override
     public int compareTo(Card other){
-        String order = "A23456789TJQK";
-
-        return order.indexOf(this.getVal()) - order.indexOf(other.getVal());
+        return this.index - other.index;
     }
 
     public char getVal(){
@@ -37,6 +40,10 @@ public class Card implements Comparable<Card>{
 
     public int getNum(){
       return num;
+    }
+
+    public int getIndex(){
+        return index;
     }
 
     public String toString(){

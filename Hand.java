@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Collections;
+import java.util.*;
 
 public class Hand{
     public List<Card> cards = new ArrayList<Card>();
@@ -11,6 +9,14 @@ public class Hand{
 
     public void addCard(Card card){
         cards.add(card);
+    }
+
+    public void removeCard(Card card){
+        cards.remove(card);
+    }
+
+    public int getSize(){
+        return cards.size();
     }
 
     public String toString(){
@@ -58,16 +64,41 @@ public class Hand{
         return perm;
     }
 
-    public int count(){
-        if (!sorted){
-            sort();
-        }
+    public int count(Card draw){
+        // flushes
 
         int points = 0;
 
+        char suit = cards.get(0).getSuit();
+        boolean flush = true;
+
+        for (Card card : cards){
+            flush = flush && (card.getSuit() == suit);
+        }
+
+        if (flush){
+            points += 4;
+
+            if (draw.getSuit() == suit){
+                points += 1;
+            }
+        }
+
+        // knobs
+
+        for (Card card: cards){
+            if (card.getVal() == 'J' && card.getSuit() == draw.getSuit()){
+                points += 1;
+            }
+        }
+
+        addCard(draw);
+
+        // 15s and doubles
+
         int sum = 0;
 
-        for (int i = 0; i < Math.pow(2, cards.size()); ++i){
+        for (int i = 0; i < Math.pow(2, getSize()); ++i){
             List<Card> perm = permutation(toBin(i));
 
             sum = 0;
@@ -83,6 +114,50 @@ public class Hand{
                 points += 2;
             }
         }
+
+        // runs
+
+        sort();
+
+        int[] diffs = new int[getSize() - 1];
+
+        for (int i = 0; i < getSize() - 1; ++i){
+            diffs[i] = cards.get(i+1).getIndex() - cards.get(i).getIndex();
+        }
+
+        int running = 0;
+        int currZero = 0;
+        int zeroMult = 1;
+
+        int d;
+
+        for (int i=0; i < diffs.length; ++i) {
+            d = diffs[i];
+
+            if (d == 0) {
+                currZero += 1;
+            } else {
+                if (currZero != 0) {
+                    zeroMult *= (currZero + 1);
+                }
+
+                currZero = 0;
+            }
+
+            if (d == 1){
+                running += 1;
+            }
+
+            if (running >= 2 && (d > 1 || i == (diffs.length - 1))){
+                points += (running + 1)*zeroMult*(currZero + 1);
+                zeroMult = 1;
+                running = 0;
+            }
+        }
+
+        // knobs
+
+        removeCard(draw);
 
         return points;
     }

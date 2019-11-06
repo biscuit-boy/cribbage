@@ -11,19 +11,29 @@ public class Cribbage{
         }
     }
 
+    public static Hand makeHand(Deck deck, String[] keys){
+        Hand hand = new Hand();
+
+        for (String key : keys){
+            hand.addCard(deck.take(key));
+        }
+
+        return hand;
+    }
+
     public static void main(String[] args) {
         Deck deck = new Deck();
 
-        Hand hand1 = new Hand();
-        Hand hand2 = new Hand();
+        String[] cards = {"AH", "JH", "6H", "KH"};
 
-        deal(deck, hand1, hand2);
+        Hand hand1 = makeHand(deck, cards);
 
-        System.out.println(hand1.toString());
-        System.out.println(hand2.toString());
+        Card drawCard1 = deck.take("3S");
+        Card drawCard2 = deck.take("3H");
 
-        System.out.println(hand1.count());
-        System.out.println(hand2.count());
+        System.out.println(hand1.count(drawCard1));
+        System.out.println(hand1.count(drawCard2));
+
 
     }
 }
