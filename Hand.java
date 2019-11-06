@@ -7,7 +7,7 @@ public class Hand{
     }
 
     public void addCard(Card card){
-        cards.add(card);
+        cards.add(0, card);
     }
 
     public void removeCard(Card card){

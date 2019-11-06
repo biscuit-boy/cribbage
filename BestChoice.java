@@ -21,17 +21,15 @@ public class BestChoice extends Cribbage{
 
                 Card[] tempCards = {firstCard, secondCard};
 
-
                 Possibility poss = new Possibility(tempCards, expectedReturn(deck, hand));
+
                 options.add(poss);
-                System.out.println(Arrays.toString(poss.cards) + " ->  " + poss.points);
 
-                System.out.println(hand.toString);
-
-                hand.addCard(firstCard);
                 hand.addCard(secondCard);
 
             }
+
+            hand.addCard(firstCard);
         }
 
         Collections.sort(options, Collections.reverseOrder());
